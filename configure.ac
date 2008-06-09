@@ -119,6 +119,7 @@ AC_CHECK_FUNC(daemon,AC_DEFINE([HAVE_DAEMON],,[Define this if you have daemon()]
 AC_HEADER_STDBOOL
 AC_C_CONST
 AC_CHECK_HEADER(malloc.h, AC_DEFINE(HAVE_MALLOC_H,,[do we have malloc.h?]))
+AC_CHECK_HEADER(link.h, AC_DEFINE(HAVE_LINK_H,,[do we have link.h?]))
 AC_CHECK_MEMBER([struct mallinfo.arena], [
         AC_DEFINE(HAVE_STRUCT_MALLINFO,,[do we have stuct mallinfo?])
     ], ,[

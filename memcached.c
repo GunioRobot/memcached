@@ -25,7 +25,9 @@ std *
 #include <ctype.h>
 
 #include <dlfcn.h>
+#ifdef HAVE_LINK_H
 #include <link.h>
+#endif
 
 /* some POSIX systems need the following definition
  * to get mlockall flags out of sys/mman.h.  */
