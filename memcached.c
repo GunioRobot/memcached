@@ -644,7 +644,8 @@ bool do_suffix_add_to_freelist(char *s) {
         return false;
     } else {
         /* try to enlarge free connections array */
-        char **new_freesuffix = realloc(freesuffix, freesuffixtotal * 2);
+        char **new_freesuffix = realloc(freesuffix,
+            sizeof(char *) * freesuffixtotal * 2);
         if (new_freesuffix) {
             freesuffixtotal *= 2;
             freesuffix = new_freesuffix;
@@ -3609,6 +3610,17 @@ int main (int argc, char **argv) {
         }
     }
 
+    /* daemonize if requested */
+    /* if we want to ensure our ability to dump core, don't chdir to / */
+    if (daemonize) {
+        int res;
+        res = daemon(maxcore, settings.verbose);
+        if (res == -1) {
+            fprintf(stderr, "failed to daemon() in order to daemonize\n");
+            return 1;
+        }
+    }
+
     /* lock paged memory if needed */
     if (lock_memory) {
 #ifdef HAVE_MLOCKALL
@@ -3634,17 +3646,6 @@ int main (int argc, char **argv) {
         }
         if (setgid(pw->pw_gid) < 0 || setuid(pw->pw_uid) < 0) {
             fprintf(stderr, "failed to assume identity of user %s\n", username);
-            return 1;
-        }
-    }
-
-    /* daemonize if requested */
-    /* if we want to ensure our ability to dump core, don't chdir to / */
-    if (daemonize) {
-        int res;
-        res = daemon(maxcore, settings.verbose);
-        if (res == -1) {
-            fprintf(stderr, "failed to daemon() in order to daemonize\n");
             return 1;
         }
     }
