@@ -348,7 +348,7 @@ static char *do_slabs_stats(uint32_t (*add_stats)(char *buf, const char *key,
                                                   const uint32_t vlen,
                                                   void *cookie),
                             void *c, int *buflen) {
-    int i, total, size, allocated = power_largest * 200 + 100;
+    int i, total, size, allocated = (power_largest * 400) + 100;
     char *buf = (char *)malloc(allocated);
     char *pos = buf;
 
