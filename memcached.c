@@ -1344,10 +1344,10 @@ static bool grow_stats_buf(conn *c, size_t needed) {
     }
 
     if (nsize > size) {
-        char *ptr = realloc(c->stats.buffer, nsize);
+        char *ptr = realloc(c->stats.buffer, nsize + c->stats.offset);
         if (ptr) {
             c->stats.buffer = ptr;
-            c->stats.size = nsize;
+            c->stats.size = nsize + c->stats.offset;
         } else {
             rv = false;
         }
