@@ -25,7 +25,7 @@ my $pidfile = "/var/run/memcached.pid";
 
 # If we don't get a valid logfile parameter in the /etc/memcached.conf file,
 # we'll just throw away all of our in-daemon output. We need to re-tie it so
-# that non-bash shells will not hang on logout. Thanks to Michael Renner for 
+# that non-bash shells will not hang on logout. Thanks to Michael Renner for
 # the tip
 my $fd_reopened = "/dev/null";
 
@@ -64,12 +64,12 @@ if(open $etchandle, $etcfile)
 
 		if($line =~ /^[^\-]/)
 		{
-			my ($directive, $arg) = $line =~ /^(.*?)\s+(.*)/; 
+			my ($directive, $arg) = $line =~ /^(.*?)\s+(.*)/;
 			$conf_directives->{$directive}->($arg);
 			next;
 		}
 
-		push @$params, $line;		
+		push @$params, $line;
 	}
 
 }else{
@@ -88,8 +88,8 @@ if(-e $pidfile)
 	chomp $localpid;
 	if(-d "/proc/$localpid")
 	{
-		print STDERR "memcached is already running.\n"; 
-		exit;		
+		print STDERR "memcached is already running.\n";
+		exit;
 	}else{
 		`rm -f $localpid`;
 	}

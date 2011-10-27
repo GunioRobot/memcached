@@ -62,7 +62,7 @@
 
 	* Patch from David Bremner <bremner@unb.ca> that implements
 	  a new option "-a" which takes an octal permission mask
-	  (like chmod) sets the permissions on the unix domain socket 
+	  (like chmod) sets the permissions on the unix domain socket
 	  (specified by "-s").
 
 2007-10-03 Paul Lindner <lindner@inuus.com>
@@ -71,12 +71,12 @@
 	  to do atomic changes to an existing key.
 
 	* Fix for stats.evictions not incrementing
-	  when exptime == 0 items are kicked off the cache. 
+	  when exptime == 0 items are kicked off the cache.
 	  from Jean-Francois BUSTARRET <jfbustarret@wat.tv>.
 
 	* Fix for do_item_cachedump() which was returning
 	  an incorrect timestamp.
-	
+
 	* Switch to unsigned 64-bit increment/decrement counters
 	  from Evan Miller and Dustin Sallings.
 
@@ -88,12 +88,12 @@
 	  provided by Dan Christian <dchristian@google.com>
 
 	* Fix for Unix Domain sockets on FreeBSD
-	  FreeBSD's sendmsg() requires msg_name in msghdr structure 
+	  FreeBSD's sendmsg() requires msg_name in msghdr structure
 	  to be NULL if not used, setting msg_namelen to 0 isn't enough.
 	  Patch from Maxim Dounin <mdounin@mdounin.ru>
 
 2007-08-21 Paul Lindner <lindner@inuus.com>
-	* Incorporate incrememnt patch from Evan Miller 
+	* Incorporate incrememnt patch from Evan Miller
 	  <emiller@imvu.com> to define increment overflow
 	  behavior.
 
@@ -153,7 +153,7 @@
 2007-04-12  Paul Lindner  <lindner@mirth.inuus.com>
 
 	* Allow changes to the verbosity level of the server with a new
-	  "verbosity" command and some compiler cleanups. 
+	  "verbosity" command and some compiler cleanups.
           Patch contributed by Paolo Borelli <paolo.borelli@gmail.com>.
 
 2007-04-08  Paul Lindner  <lindner@inuus.com>
@@ -173,7 +173,7 @@
 
 2007-03-31  Paul Lindner  <lindner@inuus.com>
 
-	* Add patch from Eli Bingham <eli@pandora.com> to 
+	* Add patch from Eli Bingham <eli@pandora.com> to
 	  re-enable the -n switch to memcached.
 
 2007-03-20  Paul Lindner  <lindner@inuus.com>
@@ -207,7 +207,7 @@
 	* Major refactoring - move API calls for assoc/items/slabs to
 	  their own individual header files.  Add apropriate const and
 	  static declarations as appropriate.
-	
+
 	* Avoid type-punning.  Do a more efficient realloc inside the
 	  conn_shrink routine.
 
@@ -240,7 +240,7 @@
 
 2006-11-26
 	* Steven Grimm <sgrimm@facebook.com>: Performance improvements:
-	  
+
 	  Dynamic sizing of hashtable to reduce collisions on very large
 	  caches and conserve memory on small caches.
 
@@ -301,7 +301,7 @@
 
 2006-08-21
 	* Nathan Neulinger <nneul@umr.edu>: fix incompatabilities with
-	  unix domain socket support and the UDP code and clean up stale 
+	  unix domain socket support and the UDP code and clean up stale
 	  sockets
 
 2006-08-20
@@ -362,10 +362,10 @@
 	  with man_MANS
 	- modify Makefile.am in the base directory to reference the doc
   	  directory using SUBDIRS
-	- modify the AC_CONFIG_FILES macro in configure.ac to output the 
+	- modify the AC_CONFIG_FILES macro in configure.ac to output the
 	  Makefile in doc
 
-	
+
 2005-01-14
 	* pidfile saving support from Lisa Seelye <lisa@gentoo.org>, sent
 	  Jan 13, 2005
@@ -381,13 +381,13 @@
 	* fix buffer overflow in items.c with 250 byte keys along with
 	  other info on the same line going into a 256 byte char[].
 	  thanks to Andrei Nigmatulin <anight@monamour.ru>
-	
+
 2004-06-15
 	* immediate deletes weren't being unlinked a few seconds,
 	  preventing "add" commands to the same key in that time period.
 	  thanks to Michael Alan Dorman <mdorman@debian.org> for the
 	  bug report and demo script.
-	
+
 2004-04-30
 	* released 1.1.11
 
@@ -400,7 +400,7 @@
 	simultaneously open file descriptors. Get the current limits and
 	try to raise them if they're not enough for the specified (or the
 	default) setting of max connections.
-	
+
 2004-02-24
 	* Adds a '-M' flag to turn off tossing items from the cache.
 	  (Jason Titus <jtitus@postini.com>)
@@ -428,15 +428,15 @@
 2003-10-09
 	* BSD compile fixes from Ryan T. Dean
 	* version 1.1.9
-	
+
 2003-09-29
 	* ignore SIGPIPE at start instead of crashing in rare cases it
 	  comes up.  no other code had to be modified, since everything
 	  else is already dead-connection-aware.  (avva)
-	
+
 2003-09-09 (Avva, Lisa Marie Seelye <lisa@gentoo.org>)
 	* setuid support
-	
+
 2003-09-05 (Avva)
 	* accept all new connections in the same event (so we work with ET epoll)
 	* mark all items as clsid=0 after slab page reassignment to please future
@@ -445,7 +445,7 @@
 2003-08-12 (Brad Fitzpatrick)
 	* use TCP_CORK on Linux or TCP_PUSH on BSD
 	* only use TCP_NODELAY when we don't have alternatives
-	
+
 2003-08-10
 	* disable Nagel's Algorithm (TCP_NODELAY) for better performance (avva)
 
@@ -478,36 +478,36 @@
 
 2003-07-01
 	* report CPU usage in stats
-	 
+
 2003-06-30
 	* version 1.1.6
 	* fix a number of obscure bugs
 	* more stats reporting
-	
+
 2003-06-10
 	* removing use of Judy; use a hash.  (judy caused memory fragmentation)
 	* shrink some structures
 	* security improvements
 	* version 1.1.0
-	
+
 2003-06-18
 	* changing maxsize back to an unsigned int
-	
+
 2003-06-16
 	* adding PHP support
 	* added CONTRIBUTORS file
 	* version 1.0.4
-	
+
 2003-06-15
 	* forgot to distribute website/api (still learning auto*)
 	* version 1.0.3
-	
+
 2003-06-15
 	* update to version 1.0.2
 	* autoconf/automake fixes for older versions
 	* make stats report version number
 	* change license from GPL to BSD
-	
+
 Fri, 13 Jun 2003 10:05:51 -0700  Evan Martin  <martine@danga.com>
 
 	* configure.ac, autogen.sh, Makefile.am:  Use autotools.
